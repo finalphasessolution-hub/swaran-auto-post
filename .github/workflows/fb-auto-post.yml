@@ -2,24 +2,19 @@ name: Swaran Collections Auto Post
 
 on:
   schedule:
-    - cron: '30 * * * *'  # Har ghante IST ke hisab se (UTC 30 min)
+    - cron: '30 * * * *'  # har ghante 30 min pe = IST 11:30, 12:30...
   workflow_dispatch:
 
 jobs:
   auto-post:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      
       - name: Install dependencies
         run: pip install requests beautifulsoup4
-      
       - name: Run auto post with photo
         env:
           FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
