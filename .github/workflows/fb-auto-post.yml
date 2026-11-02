@@ -3,7 +3,6 @@ on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
-
 jobs:
   auto-post:
     runs-on: ubuntu-latest
@@ -11,24 +10,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          
       - run: pip install requests beautifulsoup4
-      
-      - name: Run Swaran Auto Post
+      - name: Run
         env:
           FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
         run: python fb_auto_post_cloud.py
-        
-      - name: Save posted history (repeat rokne ke liye)
+      - name: Save history
         run: |
-          git config user.name "auto-post-bot"
+          git config user.name "bot"
           git config user.email "bot@swaran.com"
-          if [ -f posted_history.json ]; then
-            git add posted_history.json
-            git diff --cached --quiet || git commit -m "Update posted history - avoid repeat"
-            git push || echo "No changes to push"
-          fi
+          git add posted_history.json
+          git diff --cached --quiet || (git commit -m "Update history" && git push)
