@@ -218,3 +218,11 @@ if __name__ == "__main__":
                 print(f"Status: 200 - Post ID {result.get('id')}")
             else:
                 print(f"Failed: {result}")
+                
+permissions:
+  contents: write
+
+concurrency:
+  group: swaran-auto-post
+  cancel-in-progress: false
+
