@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import parse_qs, urlparse, quote_plus
 
 PAGE_ID = "1443186738872107"
-USER_TOKEN = os.environ.get("FB_USER_TOKEN", "YOUR_USER_TOKEN_HERE")
+USER_TOKEN = os.environ.get("FB_USER_TOKEN", "EAAOhttEXSLcBSwZA7PZB3V3jog3zv72CM7oi4ysuxO7TU0IFRmUk7zgsZBXv6qAFbaeIffNL3kiYCE2ZCc7VB2OKDmFyoN54uU3gaJJZCNqSZCbjDwId8MkmiNWfRum2rK8mkiunTbNO3w5l8sXx0PrH29de0bwgmHeRQmTaDZC1ZBE5D4FZC76ZAewG7sYaEki5sqZBOFUgNGROkUIis66mtJgTNTEjIBcUis30QZDZD")
 
 POSTED_FILE = "/tmp/posted_google_flipkart.json"
 
