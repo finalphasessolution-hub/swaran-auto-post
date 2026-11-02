@@ -2,36 +2,50 @@ name: Swaran Auto Post - Secure NoRepeat
 
 on:
   schedule:
-    - cron: '0 * * * *'  # har ghante
+    - cron: '0 * * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: swaran-auto-post
+  cancel-in-progress: false
 
 jobs:
   post:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install deps
-        run: pip install requests beautifulsoup4
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests beautifulsoup4
 
-      - name: Run Secure Auto Post
+      - name: Run auto-post
         env:
           FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           POSTED_FILE: posted_history.json
         run: python fb_auto_post_cloud.py
 
-      - name: Save history - NoRepeat
+      - name: Save history to repository
+        if: always() && !cancelled()
         run: |
           git config user.name "swaran-bot"
           git config user.email "bot@swaran.com"
           git add posted_history.json
-          git diff --cached --quiet || (git commit -m "Update history - no repeat [skip ci]" && git push)
+          if git diff --cached --quiet; then
+            echo "History unchanged; nothing to commit."
+            exit 0
+          fi
+          git commit -m "Update auto-post history [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
