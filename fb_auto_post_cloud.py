@@ -16,7 +16,7 @@ import requests
 from bs4 import BeautifulSoup
 
 PAGE_ID = os.environ.get("FB_PAGE_ID", "1443186738872107")
-USER_TOKEN = os.environ.get("FB_USER_TOKEN")
+USER_TOKEN = os.environ.get("EAAOhttEXSLcBS238P802PESYYCLhLkiIOdNwIifJUNCTKsoyUu0liOBT9zd87vQEaN7rjwmTTS7G0Ms9bDWJr2NvQSkUIWAVfcMKHlBJHrcoqCb7cplGNhwsm9Lfe82dJ1ORNKKEkA6D6GIatXQqaiZB8K7BVTcWDwHaop7m8q9DkKlkYe9wxFoijdHpTtaP9qoezq3jD48u5GeVczCVHS0ly1WZAr")
 POSTED_FILE = os.environ.get("POSTED_FILE", "/tmp/posted_products_good.json")
 
 PRODUCTS = [
