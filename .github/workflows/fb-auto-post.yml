@@ -1,8 +1,7 @@
-name: Swaran Collections Auto Post
-
+name: auto-post
 on:
   schedule:
-    - cron: '30 * * * *'  # har ghante 30 min pe = IST 11:30, 12:30...
+    - cron: '0 * * * *'  # har 1 ghante
   workflow_dispatch:
 
 jobs:
@@ -13,9 +12,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
-      - name: Run auto post with photo
+      - run: pip install requests beautifulsoup4
+      - name: Run Swaran Auto Post
         env:
           FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
         run: python fb_auto_post_cloud.py
