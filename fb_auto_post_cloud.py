@@ -16,7 +16,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 PAGE_ID = "1443186738872107"
-USER_TOKEN = os.environ.get("FB_USER_TOKEN", "EAAOhttEXSLcBS2WkhCiIXdfKVqZCyCeWVY1WDxf0VLVZC5olNah3ZCCexZBp6ghwDUIPk9axHZA5o8mXWbxzlyklhJdLZCy9ReuDWClZCHCBM8k6xBBKtPwLO4XCaZBbMgsjb6DdKoavgsbojuYcpQpL0emCDTTehfr4M2VZCqZCZBMYadObbTwx53bEPMN7EYpLpaI69MtvcISXEHdpalTVfKF3qzZAFdIqhUDF")
+USER_TOKEN = os.environ.get("FB_USER_TOKEN", "EAAOhttEXSLcBS238P802PESYYCLhLkiIOdNwIifJUNCTKsoyUu0liOBT9zd87vQEaN7rjwmTTS7G0Ms9bDWJr2NvQSkUIWAVfcMKHlBJHrcoqCb7cplGNhwsm9Lfe82dJ1ORNKKEkA6D6GIatXQqaiZB8K7BVTcWDwHaop7m8q9DkKlkYe9wxFoijdHpTtaP9qoezq3jD48u5GeVczCVHS0ly1WZAr")
 
 POSTED_FILE = "/tmp/posted_products_good.json"  # GitHub Actions me /tmp me save hoga
 
